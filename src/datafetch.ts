@@ -3,7 +3,7 @@ import { documentMeta } from "./app/editRuleset/editorTypes";
 export async function fetchHeaders(): Promise<Record<string, string>[] | undefined>{
     let resp = undefined;
     try{
-        resp = await fetch(`http://localhost:8080/headers`);
+        resp = await fetch(`https://2crvovjgki2xqtdncpuyuqua740urkai.lambda-url.us-west-1.on.aws/headers`);
     }catch(err){
         return undefined;
     }
@@ -29,7 +29,7 @@ export async function fetchHeadersByUser(accessToken: string | null): Promise<Re
 
     let resp = undefined;
     try{
-        resp = await fetch(`http://localhost:8080/headers/user`, {
+        resp = await fetch(`https://2crvovjgki2xqtdncpuyuqua740urkai.lambda-url.us-west-1.on.aws/headers/user`, {
             method: 'GET',
             headers: {
                 'Authorization': accessToken.toString()
@@ -59,7 +59,7 @@ export async function fetchRuleset(key: string): Promise<{editable: boolean, rul
             accessToken = sessionStorage['accessToken'].toString();
         }
         
-        resp = await fetch(`http://localhost:8080/rulesets/${key}`, {
+        resp = await fetch(`https://2crvovjgki2xqtdncpuyuqua740urkai.lambda-url.us-west-1.on.aws/rulesets/${key}`, {
             method: 'GET',
             headers: {
                 'Authorization': accessToken
@@ -94,7 +94,7 @@ export async function createRuleset(body: string, meta: documentMeta, callback: 
             accessToken = sessionStorage['accessToken'].toString();
         }
         
-        resp = await fetch(`http://localhost:8080/rulesets`, {
+        resp = await fetch(`https://2crvovjgki2xqtdncpuyuqua740urkai.lambda-url.us-west-1.on.aws/rulesets`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ export async function editRuleset(id: string, body: string, meta: documentMeta, 
             accessToken = sessionStorage['accessToken'].toString();
         }
         
-        resp = await fetch(`http://localhost:8080/rulesets`, {
+        resp = await fetch(`https://2crvovjgki2xqtdncpuyuqua740urkai.lambda-url.us-west-1.on.aws/rulesets`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -154,7 +154,7 @@ export async function deleteRuleset(id: string, meta: documentMeta, callback: (s
 
     let resp = undefined;
     try{
-        resp = await fetch(`http://localhost:8080/rulesets/${rulesetKey}`, {
+        resp = await fetch(`https://2crvovjgki2xqtdncpuyuqua740urkai.lambda-url.us-west-1.on.aws/rulesets/${rulesetKey}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': sessionStorage['accessToken'].toString()
