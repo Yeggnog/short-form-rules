@@ -1,11 +1,12 @@
 # ShortFormRules
 A webapp for quickly creating and sharing rulesets and supplements for tabletop gaming using a block editor.
+Easily translate ideas into rules with tools built specifically for tabletop rule writing.
 
 ## Features
 ### Block editor
 Quickly add markdown text, blockquotes, tables and dice-roll tables, with custom-built editors for each.
 
-### Default sharing
+### Share quickly
 A ruleset is immediately available for other users to view once you hit save, no extra configuration required.
 
 ### Choose your system
