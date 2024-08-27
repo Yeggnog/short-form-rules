@@ -1,0 +1,37 @@
+@import './sharedStyles.css';
+
+.toast{
+    background-color: rgba(155, 213, 238, 0.5);
+    position: fixed;
+    max-height: 5em;
+    padding: 6pt;
+    padding-top: 0;
+    padding-bottom: 0;
+    left: 12pt;
+    bottom: 12pt;
+    max-width: calc(60vw);
+    border-radius: 6px;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.toast-closed{
+    display: none;
+}
+.errorToast{
+    background-color: rgba(239, 149, 149, 0.5);
+    color: darkred;
+}
+@media (max-width: 640px) {
+    .toast{
+        left: 0;
+        bottom: 0;
+        max-width: 100vw;
+    }
+}
+@supports(backdrop-filter: blur(2px)){
+    .toast{
+        backdrop-filter: blur(2px);
+    }
+}

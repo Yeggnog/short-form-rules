@@ -17,7 +17,7 @@ import { generateBlockIndex } from '../datafetch';
         </div>
     }
     `,
-    styleUrl: './sharedStyles.css'
+    styleUrl: './toast.component.css'
 })
 export class Toast{
     @Input() data: toastData | undefined = undefined;

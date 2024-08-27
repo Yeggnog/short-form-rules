@@ -31,3 +31,13 @@
 .rsReaderContainerGrouped{
     width: auto;
 }
+
+.rsBlock{
+    border: none;
+    cursor: pointer;
+}
+.rsBlockSelected{
+    border: 3px solid rgb(34, 125, 199);
+    border-radius: 6px;
+    cursor: pointer;
+}

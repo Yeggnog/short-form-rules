@@ -1,0 +1,58 @@
+.flex{
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+.flex-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.flex-col{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.fullscreen-v{
+    height: 100vh;
+}
+.fullscreen-h{
+    width: 100vw;
+}
+
+.margin-s{
+    margin: 3pt;
+}
+.margin-m{
+    margin: 6pt;
+}
+
+.sticky{
+    position: sticky;
+    top: 0;
+}
+
+.headerFont{
+    font-family: 'ubuntu';
+}
+.light{
+    color: white;
+}
+.wrong{
+    color: darkred;
+}
+.right{
+    color:rgb(34, 125, 199);
+}
+
+.squared{
+    border-radius: 0 !important;
+}
+.centerContent{
+    display: flex;
+    align-items: center;
+}

@@ -17,7 +17,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
             <div class="radial-spacer"></div>
         </div>
     `,
-    styleUrl: './rulesetEditor.css'
+    styleUrl: './radialMenu.component.css'
 })
 export class RadialMenu{
     @Output() selectOption = new EventEmitter<string>();

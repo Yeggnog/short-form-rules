@@ -1,0 +1,39 @@
+.textInput{
+    display: flex;
+    flex-direction: row;
+    border: 3px solid black;
+    border-radius: 6px;
+    font-size: medium;
+    transition: border 0.2s;
+    cursor: text;
+}
+.textInput:focus{
+    outline-width: 0px;
+}
+.textInput-wrong{
+    border: 3px solid rgb(209, 27, 64);
+}
+.textInput-wrong:focus{
+    outline-width: 0px;
+}
+.textInput-right{
+    border: 3px solid rgb(54, 213, 73);
+}
+
+input:invalid{
+    border: 3px solid rgb(209, 27, 64);
+}
+
+.selectInput{
+    display: flex;
+    flex-direction: row;
+    border: 3px solid rgb(43, 84, 119);
+    border-radius: 6px;
+    font-size: medium;
+    transition: border 0.2s;
+    cursor: pointer;
+}
+.selectInput:focus{
+    outline-width: 0px;
+}
+

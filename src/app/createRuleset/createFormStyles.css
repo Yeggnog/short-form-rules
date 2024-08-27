@@ -1,5 +1,6 @@
-@import '../sharedStyles.css';
 @import '../rulesetReader/rulesetReader.css';
+@import '../inputStyles.css';
+@import '../rulesetCard/rulesetcard.component.css';
 
 .rsCardContainer{
     background-color: lightsteelblue;
@@ -25,6 +26,30 @@
 .rsTypeOption-selected{
     background-color: rgb(143, 255, 255);
     border: 2pt solid rgb(43, 84, 119);
+}
+
+@media (min-width: 640px) {
+    .rsTypeOption{
+        width: calc(100% - 20pt);
+    }
+    .rsTypeOption-selected{
+        width: calc(100% - 20pt);
+    }
+}
+
+@media (min-width: 768px) {
+    .rsTypeOption{
+        max-width: 75%;
+        margin: 1pt 20pt 1pt 20pt;
+        align-self: center;
+        justify-self: center;
+    }
+    .rsTypeOption-selected{
+        max-width: 75%;
+        margin: 1pt 20pt 1pt 20pt;
+        align-self: center;
+        justify-self: center;
+    }
 }
 
 .rsTypeRadioSection{

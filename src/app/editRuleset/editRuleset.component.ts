@@ -124,7 +124,7 @@ const defaultBlockData = (type: string) => {
         <confirm-modal headlineText="Delete this ruleset?" bodyText="Are you sure you want to delete this ruleset?" confirmText="Yes, delete it" declineText="No, don't delete it" [dangerous]="true" [openEvent]="openModalEmitter" (response)="deleteRuleset($event)" />
     </div>
     `,
-    styleUrl: '../rulesetoverview.component.css'
+    styleUrl: './rulesetEditor.css'
 })
 export class EditRuleset {
     @Input() metadata: Record<string,string> | undefined = undefined;

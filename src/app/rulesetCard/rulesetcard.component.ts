@@ -26,7 +26,7 @@ export class ViewRoute implements PipeTransform {
         </div>
     </div>
     `,
-    styleUrl: '../rulesetoverview.component.css'
+    styleUrl: './rulesetcard.component.css'
 })
 export class RulesetCard {
     @Input() uuid = '';

@@ -1,70 +1,10 @@
 @import './sharedStyles.css';
 @import './rulesetReader/rulesetReader.css';
 
-h2{
-    font-family: sans-serif;
-    font-size: large;
-}
-
-a{
-    text-decoration: none;
-    color: black;
-}
-
 .rsCardView{
     background-color: lightsteelblue;
     padding: 10pt;
     flex-grow: 1;
-}
-
-@media (min-width: 640px) {
-    .rsTypeOption{
-        width: calc(100% - 20pt);
-    }
-    .rsTypeOption-selected{
-        width: calc(100% - 20pt);
-    }
-}
-
-@media (min-width: 768px) {
-    .rsTypeOption{
-        max-width: 75%;
-        margin: 1pt 20pt 1pt 20pt;
-        align-self: center;
-        justify-self: center;
-    }
-    .rsTypeOption-selected{
-        max-width: 75%;
-        margin: 1pt 20pt 1pt 20pt;
-        align-self: center;
-        justify-self: center;
-    }
-}
-
-.rsEditorContainer{
-    display: flex;
-    width: 100%;
-    flex-grow: 1;
-}
-@media (max-width: 640px) {
-    .rsEditorContainer{
-        flex-direction: column;
-    }
-}
-@media (min-width: 640px) {
-    .rsEditorContainer{
-        flex-direction: row;
-    }
-}
-
-.rsBlock{
-    border: none;
-    cursor: pointer;
-}
-.rsBlockSelected{
-    border: 3px solid rgb(34, 125, 199);
-    border-radius: 6px;
-    cursor: pointer;
 }
 
 .centered{
