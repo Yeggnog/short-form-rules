@@ -1,1 +1,119 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Declaring fonts from the local files */
+@font-face{
+    font-family: 'ubuntu';
+    src: url('assets/fonts/Ubuntu/Ubuntu-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'ubuntu';
+    src: url('assets/fonts/Ubuntu/Ubuntu-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'ubuntu';
+    src: url('assets/fonts/Ubuntu/Ubuntu-Italic.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face{
+    font-family: 'ubuntu';
+    src: url('assets/fonts/Ubuntu/Ubuntu-BoldItalic.ttf');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face{
+    font-family: 'inter';
+    src: url('assets/fonts/Inter/Inter_18pt-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'inter';
+    src: url('assets/fonts/Inter/Inter_18pt-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'inter';
+    src: url('assets/fonts/Inter/Inter_18pt-Italic.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face{
+    font-family: 'inter';
+    src: url('assets/fonts/Inter/Inter_18pt-BoldItalic.ttf');
+    font-weight: bold;
+    font-style: italic;
+}
+
+body{
+    margin: 0;
+    font-family: 'inter';
+}
+
+table{
+    border-spacing: 0;
+}
+table.table-flex{
+    width: 100%;
+}
+
+tr{
+    background-color: rgb(113, 162, 207);
+}
+tr:nth-child(odd){
+    background-color: lightsteelblue;
+}
+tr.tr-flex{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+td{
+    padding: 6px;
+    align-content: center;
+    cursor: pointer;
+}
+th{
+    padding: 6px;
+    align-content: center;
+    text-align: left;
+    cursor: pointer;
+}
+
+.td-flex{
+    flex-grow: 4;
+}
+.td-flex-small{
+    flex-grow: 1;
+}
+.tdSelected{
+    border: 3px solid rgb(34, 125, 199);
+    padding: 3px;
+}
+
+strong{
+    font-family: 'ubuntu';
+    color: rgb(34, 125, 199);
+}
+
+a{
+    text-decoration: none;
+}
+
+button{
+    font-size: medium;
+    font-family: 'ubuntu';
+    border-radius: 6px;
+    border: none;
+    padding: 0.5em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}

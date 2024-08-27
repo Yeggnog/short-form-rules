@@ -1,0 +1,29 @@
+@import './sharedStyles.css';
+@import './rulesetReader/rulesetReader.css';
+
+.profileModal{
+    background-color: rgba(155, 213, 238, 0.75);
+    width: 40vw;
+    min-height: 30vh;
+    top: calc(50% - 30vh);
+    padding: 6pt;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 6px;
+    border: none;
+}
+@media (max-width: 640px) {
+    .profileModal{
+        width: 80vw;
+    }
+}
+@supports(backdrop-filter: blur(2px)){
+    .profileModal{
+        backdrop-filter: blur(2px);
+    }
+}
+
+a{
+    color: black;
+    font-weight: bold;
+}

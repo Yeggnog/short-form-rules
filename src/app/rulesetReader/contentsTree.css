@@ -1,0 +1,21 @@
+
+.header{
+    font-family: 'ubuntu';
+    text-decoration: none;
+}
+
+.h2{
+    border-left: 1em solid rgba(0, 0, 0, 0);
+}
+.h3{
+    border-left: 1.5em solid rgba(0, 0, 0, 0);
+}
+.h4{
+    border-left: 2em solid rgba(0, 0, 0, 0);
+}
+.h5{
+    border-left: 2.5em solid rgba(0, 0, 0, 0);
+}
+.h6{
+    border-left: 3em solid rgba(0, 0, 0, 0);
+}

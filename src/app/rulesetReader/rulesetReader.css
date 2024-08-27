@@ -1,0 +1,33 @@
+
+.rsReaderPage{
+    background-color: white;
+    padding: 10pt;
+    flex-grow: 1;
+}
+
+@media (min-width: 640px) {
+    .rsReaderPage{
+        width: calc(100% - 20pt);
+    }
+}
+
+@media (min-width: 768px) {
+    .rsReaderPage{
+        max-width: 75%;
+        margin: 20pt;
+        align-self: center;
+        justify-self: center;
+    }
+}
+
+.rsReaderContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: lightsteelblue;
+    width: 100%;
+    transition: 0.5s width;
+    flex-grow: 1;
+}
+.rsReaderContainerGrouped{
+    width: auto;
+}

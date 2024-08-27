@@ -1,0 +1,32 @@
+@import './sharedStyles.css';
+
+.site-nav{
+    background-color: black;
+    color: white;
+    padding: 3pt;
+    width: auto;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+button.profileOpen{
+    background-color: black;
+    color: white;
+    transition: 0.5s background;
+    align-self: center;
+    right: 6pt;
+    position: absolute;
+
+}
+button.profileOpen:hover{
+    background-color: slategrey;
+}
