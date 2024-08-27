@@ -1,4 +1,5 @@
 @import './sharedStyles.css';
+@import './buttonStyles.css';
 
 .toast{
     background-color: rgba(155, 213, 238, 0.5);

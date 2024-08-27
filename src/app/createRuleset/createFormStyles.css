@@ -1,5 +1,6 @@
 @import '../rulesetReader/rulesetReader.css';
 @import '../inputStyles.css';
+@import '../buttonStyles.css';
 @import '../rulesetCard/rulesetcard.component.css';
 
 .rsCardContainer{

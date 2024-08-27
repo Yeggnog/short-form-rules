@@ -55,58 +55,13 @@ button{
     cursor: pointer;
     display: flex;
     align-items: center;
+    transition: 0.25s background-color, 0.25s border;
 }
 
 button.filled{
     color: white;
     background-color: rgb(34, 125, 199);
-    transition: 0.25s background-color;
 }
 button.filled:hover{
     background-color: rgb(58, 177, 228);
-}
-
-button.unfilled{
-    color: rgb(34, 125, 199);
-    background: none;
-    border: 3px solid rgb(34, 125, 199);
-    font-weight: bold;
-    transition: 0.25s border;
-    transition: 0.25s background;
-}
-button.unfilled:hover{
-    background-color: rgb(58, 177, 228);
-}
-
-button.err{
-    color: darkred;
-    background: none;
-    border: 3px solid darkred;
-    font-weight: bold;
-    transition: 0.25s border;
-    transition: 0.25s background;
-}
-button.err:hover{
-    background-color: rgb(239, 149, 149);
-}
-
-button.fill-grey{
-    color: white;
-    background-color: lightslategrey;
-    transition: 0.25s background-color;
-}
-button.fill-grey:hover{
-    background-color: lightslategrey;
-}
-
-button.black{
-    color: black;
-    background: none;
-    border: 3px solid black;
-    font-weight: bold;
-    transition: 0.25s border;
-    transition: 0.25s background;
-}
-button.black:hover{
-    background-color: rgb(198, 198, 198);
 }

@@ -37,3 +37,10 @@ input:invalid{
     outline-width: 0px;
 }
 
+button.fill-grey{
+    color: white;
+    background-color: lightslategrey;
+}
+button.fill-grey:hover{
+    background-color: lightslategrey;
+}

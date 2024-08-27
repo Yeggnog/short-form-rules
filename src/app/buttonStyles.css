@@ -1,0 +1,20 @@
+
+button.unfilled{
+    color: rgb(34, 125, 199);
+    background: none;
+    border: 3px solid rgb(34, 125, 199);
+    font-weight: bold;
+}
+button.unfilled:hover{
+    background-color: rgb(58, 177, 228);
+}
+
+button.err{
+    color: darkred;
+    background: none;
+    border: 3px solid darkred;
+    font-weight: bold;
+}
+button.err:hover{
+    background-color: rgb(239, 149, 149);
+}

@@ -1,5 +1,7 @@
 @import '../sharedStyles.css';
 @import '../rulesetReader/rulesetReader.css';
+@import '../buttonStyles.css';
+@import '../inputStyles.css';
 
 .rsEditPanel{
     background-color: lightsteelblue;
@@ -67,6 +69,16 @@ textarea.rsTextEdit{
     height: 40vh;
     resize: none;
     cursor: text;
+}
+
+button.black{
+    color: black;
+    background: none;
+    border: 3px solid black;
+    font-weight: bold;
+}
+button.black:hover{
+    background-color: rgb(198, 198, 198);
 }
 
 button.fill-black{

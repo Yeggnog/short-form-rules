@@ -1,55 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
-/* Declaring fonts from the local files */
-@font-face{
-    font-family: 'ubuntu';
-    src: url('assets/fonts/Ubuntu/Ubuntu-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face{
-    font-family: 'ubuntu';
-    src: url('assets/fonts/Ubuntu/Ubuntu-Bold.ttf');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face{
-    font-family: 'ubuntu';
-    src: url('assets/fonts/Ubuntu/Ubuntu-Italic.ttf');
-    font-weight: normal;
-    font-style: italic;
-}
-@font-face{
-    font-family: 'ubuntu';
-    src: url('assets/fonts/Ubuntu/Ubuntu-BoldItalic.ttf');
-    font-weight: bold;
-    font-style: italic;
-}
-
-@font-face{
-    font-family: 'inter';
-    src: url('assets/fonts/Inter/Inter_18pt-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face{
-    font-family: 'inter';
-    src: url('assets/fonts/Inter/Inter_18pt-Bold.ttf');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face{
-    font-family: 'inter';
-    src: url('assets/fonts/Inter/Inter_18pt-Italic.ttf');
-    font-weight: normal;
-    font-style: italic;
-}
-@font-face{
-    font-family: 'inter';
-    src: url('assets/fonts/Inter/Inter_18pt-BoldItalic.ttf');
-    font-weight: bold;
-    font-style: italic;
-}
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 body{
     margin: 0;
