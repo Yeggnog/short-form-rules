@@ -1,4 +1,3 @@
-@import './bgColors.css';
 
 h1 h2 h3 h4 h5 h6{
     font-family: 'ubuntu';
@@ -93,6 +92,7 @@ img.icon-fill{
 }
 
 .rsHeader{
+    background-color: black;
     color: white;
     padding: 6pt;
     margin-top: 0;

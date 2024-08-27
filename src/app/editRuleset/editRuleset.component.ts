@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild, inject, EventEmitter } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ParseMDPipe } from '../../htmlsanitize';
-import { headerColorClass } from "../renderingUtils";
+import { headerColor } from "../renderingUtils";
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { fetchRuleset, editRuleset, deleteRuleset, generateBlockIndex, scrubTitleString } from "../../datafetch";
 import { EditPanel } from "./editPanel.component";
@@ -69,7 +69,7 @@ const defaultBlockData = (type: string) => {
     <div class="flex-col fullscreen-v">
         <site-nav />
         @if(cleanedMetadata){
-            <div [class]="getHeaderColor(cleanedMetadata.color) + ' sticky'">
+            <div class="rsHeader sticky" [style]="'background-color: ' + getHeaderColor(cleanedMetadata['color'])">
                 <div class="flex-row">
                     <a [routerLink]="getViewRoute()" routerLinkActive="true" class="margin-s"><span class="light"><img class="icon" src="arrow_back_icon.svg"> Back</span></a>
                 </div>
@@ -345,6 +345,6 @@ export class EditRuleset {
     }
 
     getHeaderColor(color: string){
-        return headerColorClass(color);
+        return headerColor(color);
     }
 }

@@ -32,7 +32,7 @@ import { colorOptions } from "../../renderingUtils";
         <div class="flex-row flex-wrap">
             @for(option of colorOptions; track option.name){
                 <input [id]="option.value" type="radio" name="RulesetColor" [value]="option.value" (change)="postColorUpdate($event)" class="sr-only">
-                <label [for]="option.value" [class]="getSwatchClass(option.value) + ' ' + option.class">{{ option.value }}</label><br>
+                <label [for]="option.value" [class]="getSwatchClass(option.value)" [style]="'background-color: ' + option.color">{{ option.value }}</label><br>
             }
         </div>
     `,

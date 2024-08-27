@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ParseMDPipe } from '../../htmlsanitize';
 import { fetchRuleset } from '../../datafetch';
 import { ActivatedRoute } from '@angular/router';
-import { headerColorClass } from '../renderingUtils';
+import { headerColor } from '../renderingUtils';
 import { blockData } from '../editRuleset/editorTypes';
 import { mdToBlocks } from '../../blocktranslate';
 import { RulesetBlock } from '../editRuleset/rulesetBlock.component';
@@ -26,7 +26,7 @@ export class ViewRoute implements PipeTransform {
     <div class="flex-col fullscreen-v">
         <site-nav />
         @if(metadata && metadata !== {}){
-            <div [class]="getHeaderColor(metadata['color']) + ' sticky'">
+            <div class="rsHeader sticky" [style]="'background-color: ' + getHeaderColor(metadata['color'])">
                 <h2>{{ metadata['title'] }}</h2>
                 <span>{{ metadata['author'] }}</span> - 
                 <span>{{ metadata['system'] }}</span> <span> ({{ metadata['type'] }})</span><br>
@@ -103,6 +103,6 @@ export class RulesetView {
     }
 
     getHeaderColor(color: string){
-        return headerColorClass(color);
+        return headerColor(color);
     }
 }

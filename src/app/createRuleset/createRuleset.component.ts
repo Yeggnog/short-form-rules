@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { headerColorClass, colorOptions } from "../renderingUtils";
+import { headerColor, colorOptions } from "../renderingUtils";
 import { createRuleset } from "../../datafetch";
 import { RulesetTypeOption } from "./rulesetTypeOption.component";
 import { SiteHeader } from "../siteHeader.component";
@@ -19,7 +19,7 @@ import { Toast, ToastManager } from "../toast.component";
 
         <div class="rsReaderContainer">
         <div id="RulesetPreviewCard" class="rsCard sticky">
-            <h2 [class]="getHeaderColor(color)">{{ title }}</h2>
+            <h2 class="rsHeader centerContent" [style]="'background-color: ' + getHeaderColor(color)">{{ title }}</h2>
             <div class="rsCardBody">
                 {{ author }}<br>
                 <span>{{ system }}</span> - <span>{{ type }}</span><br>
@@ -53,7 +53,7 @@ import { Toast, ToastManager } from "../toast.component";
             <div class="flex-row flex-wrap">
                 @for(option of colorOptions; track option.name){
                     <input [id]="option.value" type="radio" name="RulesetColor" [value]="option.value" (change)="postColorUpdate($event)" class="sr-only">
-                    <label [for]="option.value" [class]="getSwatchClass(option.value) + ' ' + option.class">{{ option.value }}</label><br>
+                    <label [for]="option.value" [class]="getSwatchClass(option.value)" [style]="'background-color: ' + option.color">{{ option.value }}</label><br>
                 }
             </div><br>
 
@@ -139,7 +139,7 @@ export class CreateRuleset {
     }
 
     getHeaderColor(color: string){
-        return headerColorClass(color);
+        return headerColor(color);
     }
 
     getSwatchClass(color: string){
