@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RulesetCard } from './rulesetcard.component';
 
-const cardsPerPage = 3; // arbitrarily shortened due to a small pool of test content
+const cardsPerPage = 12;
 
 @Component({
     selector: 'ruleset-card-container',

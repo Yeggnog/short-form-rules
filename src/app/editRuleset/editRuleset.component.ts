@@ -144,6 +144,7 @@ export class EditRuleset {
         type: "Standalone",
         color: "black"
     } as documentMeta;
+    savedRulesetTitle = '';
 
     rulesetBlocks: blockData[] = [];
     selectedBlockId = "";
@@ -198,9 +199,19 @@ export class EditRuleset {
         // finalize the edits if the document has changed
         if(this.metadata){
             const mdDocument = blocksToMd(this.rulesetBlocks);
-            editRuleset(this.metadata['id'], mdDocument, this.cleanedMetadata, (successful: boolean) => {
+            editRuleset(this.metadata['id'], mdDocument, this.cleanedMetadata, this.savedRulesetTitle, (successful: boolean) => {
                 if(successful){
                     this.toastManager.createToast("Changes saved!", "normal");
+
+                    if(this.savedRulesetTitle != this.cleanedMetadata.title){
+                        // if the title was changed, redirect to the proper edit page
+                        setTimeout(() => {
+                            if(this.metadata){
+                                this.router.navigate([`/edit/${scrubTitleString(this.cleanedMetadata.title)}-${this.metadata['id']}`]);
+                                this.savedRulesetTitle = '';
+                            }
+                        }, 200);
+                    }
                 }else{
                     this.toastManager.createToast("Failed to save changes, try again later.", "error");
                 }
@@ -314,6 +325,9 @@ export class EditRuleset {
     }
 
     updateMeta(meta: documentMeta){
+        if(meta.title != this.cleanedMetadata.title){
+            this.savedRulesetTitle = this.cleanedMetadata.title;
+        }
         this.cleanedMetadata = meta;
     }
 
@@ -327,7 +341,11 @@ export class EditRuleset {
 
     getViewRoute(){
         if(this.metadata){
-            return '/view/' + scrubTitleString(this.cleanedMetadata.title) + '-' + this.metadata['id'];
+            if(this.savedRulesetTitle != ''){
+                return '/view/' + scrubTitleString(this.savedRulesetTitle) + '-' + this.metadata['id'];
+            }else{
+                return '/view/' + scrubTitleString(this.cleanedMetadata.title) + '-' + this.metadata['id'];
+            }
         }else{
             return "";
         }

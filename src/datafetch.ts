@@ -118,7 +118,7 @@ export async function createRuleset(body: string, meta: documentMeta, callback: 
     }
 }
 
-export async function editRuleset(id: string, body: string, meta: documentMeta, callback: (successful: boolean) => void){
+export async function editRuleset(id: string, body: string, meta: documentMeta, savedTitle: string = '', callback: (successful: boolean) => void){
     let resp = undefined;
     try{
         let accessToken = '';
@@ -132,7 +132,7 @@ export async function editRuleset(id: string, body: string, meta: documentMeta, 
                 'Content-Type': 'application/json',
                 'Authorization': accessToken
             },
-            body: JSON.stringify({ body: body, meta: meta, id: id })
+            body: JSON.stringify({ body: body, meta: meta, id: id, savedTitle: savedTitle })
         });
     }catch(err){
         // handle fetch errors

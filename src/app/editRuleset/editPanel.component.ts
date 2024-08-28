@@ -11,6 +11,7 @@ import { MetadataEditorFill } from "./editPanelFills/metadataEditorFill.componen
     imports: [TextEditorFill, TableEditorFill, DiceTableEditorFill, MetadataEditorFill],
     template: `
     <div [class]="getPanelClass()">
+    <div id="rsEditPanelSlider">
         <div class="flex-row">
             @if(!editingMetadata){
                 <button class="unfilled margin-s" (click)="onDelete()"><img class="icon" src="delete_icon_blue.svg"> Delete</button>
@@ -35,6 +36,7 @@ import { MetadataEditorFill } from "./editPanelFills/metadataEditorFill.componen
                 }
             }
         }
+    </div>
     </div>
     `,
     styleUrl: './rulesetEditor.css'
