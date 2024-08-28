@@ -134,7 +134,7 @@ export async function authChallenge(rulesetKey: string, callback: (successful: b
     if(accessToken){
         let resp = undefined;
         try{
-            resp = await fetch(`http://localhost:8080/rulesets/auth/${rulesetKey}`, {
+            resp = await fetch(`https://2crvovjgki2xqtdncpuyuqua740urkai.lambda-url.us-west-1.on.aws/rulesets/auth/${rulesetKey}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': sessionStorage['accessToken'].toString()
