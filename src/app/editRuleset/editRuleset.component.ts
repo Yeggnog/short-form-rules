@@ -69,7 +69,7 @@ const defaultBlockData = (type: string) => {
     <div class="flex-col fullscreen-v">
         <site-nav />
         @if(cleanedMetadata){
-            <div class="rsHeader sticky" [style]="'background-color: ' + getHeaderColor(cleanedMetadata['color'])">
+            <div class="rsHeader" [style]="'background-color: ' + getHeaderColor(cleanedMetadata['color'])">
                 <div class="flex-row">
                     <a [routerLink]="getViewRoute()" routerLinkActive="true" class="margin-s"><span class="light"><img class="icon" src="arrow_back_icon.svg"> Back</span></a>
                 </div>
@@ -85,7 +85,7 @@ const defaultBlockData = (type: string) => {
             </div>
         }
         @else{
-            <div class="rsHeader sticky">
+            <div class="rsHeader">
                 <h2>Sample Ruleset Title</h2>
                 Sample Author<br>
                 <span>Custom</span> - <span>Supplement</span><br>

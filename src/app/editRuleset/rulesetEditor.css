@@ -27,7 +27,7 @@
     .rsEditPanel{
         flex-grow: 1;
         min-height: 80vh;
-        height: 100%;
+        height: 90%;
         min-width: 33vw;
     }
     #rsEditPanelSlider{
@@ -41,6 +41,7 @@
     display: flex;
     width: 100%;
     flex-grow: 1;
+    background-color: lightsteelblue;
 }
 @media (max-width: 640px) {
     .rsEditorContainer{
@@ -91,7 +92,7 @@ button.fill-black{
     color: white;
     background-color: black;
     font-weight: bold;
-    transition: 0.25s background;
+    transition: 0.25s background-color;
 }
 button.fill-black:hover{
     background-color: rgb(71, 71, 71);

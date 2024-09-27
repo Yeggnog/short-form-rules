@@ -3,7 +3,8 @@
 .rsRadialMenu{
     background-color: rgb(34, 125, 199);
     border-radius: 50%;
-    position: absolute;
+    position: fixed;
+    z-index: 2;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

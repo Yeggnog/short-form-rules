@@ -16,7 +16,7 @@ import { blockData, documentMeta } from "../editorTypes";
         </div>
 
         <label for="textEditor" class="sr-only">Block Content:</label><br>
-        <textarea name="textEditor" #textEditor class="rsTextEdit" maxLength=1200 (change)="onTextChange($event)" [(ngModel)]="blockText" [value]="blockData['contents']"></textarea><br>
+        <textarea name="textEditor" #textEditor class="rsTextEdit textInput" maxLength=1200 (change)="onTextChange($event)" [(ngModel)]="blockText" [value]="blockData['contents']"></textarea><br>
 
         <input type="checkbox" name="blockQuoteToggle" value="true" [(ngModel)]="blockQuoteChecked" (click)="onBQSelectionChange($event)">
         <label for="blockQuoteToggle"> Blockquote</label>
