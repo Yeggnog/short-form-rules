@@ -24,7 +24,9 @@ import { deleteUser } from "../authhandler";
             <h4>Your Rulesets</h4>
             <ruleset-card-container [headerData]="rulesetHeaders" />
 
-            <button class="err" (click)="attemptDelete()"><img class="icon" src="delete_icon_red.svg"> Delete Account</button>
+            @if(username != ''){
+                <button class="err" (click)="attemptDelete()"><img class="icon" src="delete_icon_red.svg"> Delete Account</button>
+            }
 
             </div>
         </div>
@@ -33,7 +35,9 @@ import { deleteUser } from "../authhandler";
             <toast [data]="toastManager.toasts[0]" (close)=toastManager.closeToast($event) />
         }
 
-        <confirm-modal headlineText="Confirm Account Deletion" bodyText="Are you sure you want to delete your account?" confirmText="Yes, delete my account" declineText="No, don't delete it" [dangerous]="true" [openEvent]="openModalEmitter" (response)="delete($event)" />
+        @if(username != ''){
+            <confirm-modal headlineText="Confirm Account Deletion" bodyText="Are you sure you want to delete your account?" confirmText="Yes, delete my account" declineText="No, don't delete it" [dangerous]="true" [openEvent]="openModalEmitter" (response)="delete($event)" />
+        }
     </div>
     `,
     styleUrl: './profileStyles.css'
@@ -47,7 +51,7 @@ export class ProfileView {
     username = "";
 
     ngOnInit(){
-        if(sessionStorage['username']){
+        if(sessionStorage['username'] && sessionStorage['accessToken']){
             this.username = sessionStorage['username'];
             this.getUserRulesets();
         }

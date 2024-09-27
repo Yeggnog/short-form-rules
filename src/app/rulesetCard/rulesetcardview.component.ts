@@ -12,9 +12,12 @@ import { Toast, ToastManager } from '../toast.component';
     template: `
     <div class="flex-col fullscreen-v">
         <site-nav />
-        <div class="flex-row sticky bg-black">
-            <a routerLink="create" routerLinkActive="true" class="margin-s"><button class="filled"><img class="icon" src="add_icon.svg"> Create a Ruleset</button></a>
-        </div>
+        @if(username != ''){
+            <div class="flex-row sticky bg-black">
+                <a routerLink="create" routerLinkActive="true" class="margin-s"><button class="filled"><img class="icon" src="add_icon.svg"> Create a Ruleset</button></a>
+            </div>
+        }
+
         <div class="rsCardView">
             <ruleset-card-container [headerData]="headers" />
         </div>
@@ -29,6 +32,7 @@ import { Toast, ToastManager } from '../toast.component';
 export class RulesetCardView {
     headers: Record<string,string>[] = [];
     toastManager: ToastManager = new ToastManager();
+    username = '';
 
     async ngOnInit(){
         const headers = await(fetchHeaders());
@@ -36,6 +40,11 @@ export class RulesetCardView {
             this.headers = headers;
         }else{
             this.toastManager.createToast("Failed to fetch the card data - try again later.", "error");
+        }
+
+        // check if the user is logged in
+        if(sessionStorage['username'] && sessionStorage['accessToken']){
+            this.username = sessionStorage['username'];
         }
     }
 }
