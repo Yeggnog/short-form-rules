@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ParseMDPipe } from '../../htmlsanitize';
 import { fetchRuleset } from '../../datafetch';
 import { ActivatedRoute } from '@angular/router';
-import { headerColor } from '../renderingUtils';
+import { headerColor, headerTextColor } from '../renderingUtils';
 import { blockData } from '../editRuleset/editorTypes';
 import { mdToBlocks } from '../../blocktranslate';
 import { RulesetBlock } from '../editRuleset/rulesetBlock.component';
@@ -26,12 +26,33 @@ export class ViewRoute implements PipeTransform {
     <div class="flex-col fullscreen-v">
         <site-nav />
         @if(metadata && metadata !== {}){
-            <div class="rsHeader sticky" [style]="'background-color: ' + getHeaderColor(metadata['color'])">
+            <div class="rsHeader sticky" [style]="'background-color: ' + getHeaderColor(metadata['color']) + '; color: ' + getheaderTextColor(metadata['color'])">
+                <a routerLink='' routerLinkActive="true" class="margin-s">
+                    <span [class]="(bannerTextDark) ? '' : 'light'">
+                        @if(bannerTextDark){
+                            <img class="icon" src="arrow_back_icon_dark.svg">
+                        }
+                        @else{
+                            <img class="icon" src="arrow_back_icon.svg">
+                        }
+                            Back
+                    </span>
+                </a>
                 <h2>{{ metadata['title'] }}</h2>
                 <span>{{ metadata['author'] }}</span> - 
                 <span>{{ metadata['system'] }}</span> <span> ({{ metadata['type'] }})</span><br>
                 @if(rulesetEditable){
-                    <a [routerLink]="rulesetUUID | viewRoute: 'edit'" routerLinkActive="true"><button class="unfilled"><img class="icon" src="edit_icon_blue.svg"> Edit</button></a>
+                    <a [routerLink]="rulesetUUID | viewRoute: 'edit'" routerLinkActive="true">
+                        <button [class]="'unfilled ' + ((bannerTextDark) ? 'black' : 'white')">
+                            @if(bannerTextDark){
+                                <img class="icon" src="edit_icon_dark.svg">
+                            }
+                            @else{
+                                <img class="icon" src="edit_icon.svg">
+                            }
+                            Edit
+                        </button>
+                    </a>
                 }
                 @else{
                     <br>
@@ -83,6 +104,7 @@ export class RulesetView {
     route = inject(ActivatedRoute);
     toastManager: ToastManager = new ToastManager();
     rulesetEditable = false;
+    bannerTextDark = false;
 
     async ngOnInit(){
         const urlId = this.route.snapshot.paramMap.get("id");
@@ -96,6 +118,8 @@ export class RulesetView {
                 this.metadata = rulesetResponse.rulesetData.meta;
                 const rulesetData = rulesetResponse.rulesetData.stream;
                 this.rulesetBlocks = mdToBlocks(rulesetData);
+
+                this.setheaderTheme(this.metadata['color']);
             }else{
                 this.toastManager.createToast("Failed to fetch the ruleset data - try again later.", "error");
             }
@@ -104,5 +128,14 @@ export class RulesetView {
 
     getHeaderColor(color: string){
         return headerColor(color);
+    }
+
+    getheaderTextColor(color: string){
+        return headerTextColor(color);
+    }
+
+    setheaderTheme(color: string){
+        const result = headerTextColor(color);
+        this.bannerTextDark = (result == 'black');
     }
 }

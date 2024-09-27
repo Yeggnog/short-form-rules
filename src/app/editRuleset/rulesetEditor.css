@@ -78,16 +78,6 @@ textarea.rsTextEdit{
     cursor: text;
 }
 
-button.black{
-    color: black;
-    background: none;
-    border: 3px solid black;
-    font-weight: bold;
-}
-button.black:hover{
-    background-color: rgb(198, 198, 198);
-}
-
 button.fill-black{
     color: white;
     background-color: black;
@@ -96,4 +86,7 @@ button.fill-black{
 }
 button.fill-black:hover{
     background-color: rgb(71, 71, 71);
+}
+button.fill-black:focus{
+    border: 3px solid white;
 }

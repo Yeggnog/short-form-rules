@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild, inject, EventEmitter } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ParseMDPipe } from '../../htmlsanitize';
-import { headerColor } from "../renderingUtils";
+import { headerColor, headerTextColor } from "../renderingUtils";
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { fetchRuleset, editRuleset, deleteRuleset, generateBlockIndex, scrubTitleString } from "../../datafetch";
 import { EditPanel } from "./editPanel.component";
@@ -69,9 +69,19 @@ const defaultBlockData = (type: string) => {
     <div class="flex-col fullscreen-v">
         <site-nav />
         @if(cleanedMetadata){
-            <div class="rsHeader" [style]="'background-color: ' + getHeaderColor(cleanedMetadata['color'])">
+            <div class="rsHeader" [style]="'background-color: ' + getHeaderColor(cleanedMetadata['color']) + '; color: ' + getheaderTextColor(cleanedMetadata['color'])">
                 <div class="flex-row">
-                    <a [routerLink]="getViewRoute()" routerLinkActive="true" class="margin-s"><span class="light"><img class="icon" src="arrow_back_icon.svg"> Back</span></a>
+                    <a [routerLink]="getViewRoute()" routerLinkActive="true" class="margin-s">
+                        <span [class]="(bannerTextDark) ? '' : 'light'">
+                            @if(bannerTextDark){
+                                <img class="icon" src="arrow_back_icon_dark.svg">
+                            }
+                            @else{
+                                <img class="icon" src="arrow_back_icon.svg">
+                            }
+                             Back
+                        </span>
+                    </a>
                 </div>
                 <h2>{{ cleanedMetadata['title'] }}</h2>
                 <span>{{ cleanedMetadata['author'] }}</span> - 
@@ -80,7 +90,15 @@ const defaultBlockData = (type: string) => {
                     <button class="filled margin-s" (click)="editMeta()"><img class="icon" src="edit_icon.svg"> Edit</button>
                     <button class="filled margin-s" (click)="openRadialMenu()"><img class="icon" src="add_icon.svg"> New Block</button>
                     <button class="filled margin-s" (click)="finalizeEdits()"><img class="icon" src="save_icon.svg"> Save Changes</button>
-                    <button class="unfilled err margin-s" (click)="openModalEmitter.emit(true)"><img class="icon" src="delete_icon_red.svg"> Delete ruleset</button>
+                    <button [class]="'unfilled margin-s ' + ((bannerTextDark) ? 'err' : 'white')" (click)="openModalEmitter.emit(true)">
+                        @if(bannerTextDark){
+                            <img class="icon" src="delete_icon_red.svg">
+                        }
+                        @else{
+                            <img class="icon" src="delete_icon.svg">
+                        }
+                         Delete ruleset
+                    </button>
                 </div>
             </div>
         }
@@ -95,22 +113,20 @@ const defaultBlockData = (type: string) => {
         }
 
         <div class="rsEditorContainer">
-            <div [class]="getReaderClass()">
-                @if(rulesetBlocks.length > 0){
-                    <div class="rsReaderPage" (contextmenu)="openRadialMenu()">
+            <section [class]="getReaderClass()">
+                <section class="rsReaderPage" (contextmenu)="openRadialMenu()">
+                    @if(rulesetBlocks.length > 0){
                         @for(block of rulesetBlocks; track block['blockId']){
-                            <div [class]="getBlockClass(block)" (click)="onSelectBlock(block)">
+                            <a href='#' [class]="getBlockClass(block)" (click)="onSelectBlockAccessible(block)">
                                 <rs-block [blockData]="block" [onSelected]="onSelectBlock" [selectedBlockId]="selectedBlockId" (contextmenu)="selectBlockNoEdit(block)" />
-                            </div>
+                            </a>
                         }
-                    </div>
-                }
-                @else{
-                    <div class="rsReaderPage" (contextmenu)="openRadialMenu()">
+                    }
+                    @else{
                         <h2> Welcome to ShortFormRules! Right click or hit the add button to get started. </h2>
-                    </div>
-                }
-            </div>
+                    }
+                </section>
+            </section>
 
             <edit-panel [(editorVisible)]="editPanelVisible" #EditPanel [editingMetadata]="editingMetadata" [blockData]="selectedBlockData" [metaData]="cleanedMetadata" (submitChanges)="updateSelectedBlock($event)" (submitMeta)="updateMeta($event)" (deleteBlock)="deleteSelectedBlock()" />
 
@@ -155,6 +171,8 @@ export class EditRuleset {
     editingMetadata = false;
     rulesetEditable = false;
 
+    bannerTextDark = false;
+
     async ngOnInit(){
         const urlId = this.route.snapshot.paramMap.get("id");
 
@@ -183,6 +201,9 @@ export class EditRuleset {
 
                         this.rulesetData = rulesetResponse.rulesetData.stream;
                         this.rulesetBlocks = mdToBlocks(this.rulesetData);
+                        
+                        // establish the header color theme
+                        this.setheaderTheme(this.cleanedMetadata['color']);
                     }else{
                         this.toastManager.createToast("Failed to fetch the ruleset data - try again later.", "error");
                     }
@@ -303,6 +324,10 @@ export class EditRuleset {
             this.deselectAll();
         }
     }
+    onSelectBlockAccessible(block: blockData){
+        this.onSelectBlock(block);
+        return false; // tell the site not to navigate to the link
+    }
 
     // selects a block without opening the edit panel (for insert ordering)
     selectBlockNoEdit(block: blockData){
@@ -329,6 +354,7 @@ export class EditRuleset {
             this.savedRulesetTitle = this.cleanedMetadata.title;
         }
         this.cleanedMetadata = meta;
+        this.setheaderTheme(this.cleanedMetadata.color);
     }
 
     deselectAll(){
@@ -362,7 +388,16 @@ export class EditRuleset {
         return "rsReaderContainer" + ((this.editPanelVisible) ? " rsReaderContainerGrouped" : "");
     }
 
+    setheaderTheme(color: string){
+        const result = headerTextColor(color);
+        this.bannerTextDark = (result == 'black');
+    }
+
     getHeaderColor(color: string){
         return headerColor(color);
+    }
+
+    getheaderTextColor(color: string){
+        return headerTextColor(color);
     }
 }

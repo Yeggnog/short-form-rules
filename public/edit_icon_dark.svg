@@ -6,10 +6,7 @@
    fill="#e8eaed"
    version="1.1"
    id="svg4"
-   sodipodi:docname="arrow_back_icon.svg"
-   inkscape:export-filename="arrow_back_icon_dark.svg"
-   inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96"
+   sodipodi:docname="edit_icon.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +24,7 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false" />
   <path
-     d="m 313,-440 224,224 -57,56 -320,-320 320,-320 57,56 -224,224 h 487 v 80 z"
+     d="m 200,-200 h 57 l 391,-391 -57,-57 -391,391 z m -80,80 v -170 l 528,-527 q 12,-11 26.5,-17 14.5,-6 30.5,-6 16,0 31,6 15,6 26,18 l 55,56 q 12,11 17.5,26 5.5,15 5.5,30 0,16 -5.5,30.5 Q 829,-659 817,-647 l -527,527 z m 640,-584 -56,-56 z m -141,85 -28,-29 57,57 z"
      id="path2"
-     style="fill:#ffffff;fill-opacity:1" />
+     style="fill:#000000;fill-opacity:1" />
 </svg>

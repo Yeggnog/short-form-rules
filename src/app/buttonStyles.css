@@ -1,12 +1,12 @@
 
 button.unfilled{
-    color: rgb(34, 125, 199);
+    color: #026DC5;
     background: none;
-    border: 3px solid rgb(34, 125, 199);
+    border: 3px solid #026DC5;
     font-weight: bold;
 }
 button.unfilled:hover{
-    background-color: rgb(58, 177, 228);
+    background-color: #E1F1F9;
 }
 
 button.err{
@@ -16,5 +16,28 @@ button.err{
     font-weight: bold;
 }
 button.err:hover{
-    background-color: rgb(239, 149, 149);
+    background-color: #F09D9D;
+}
+
+button.black{
+    color: black;
+    background: none;
+    border: 3px solid black;
+    font-weight: bold;
+}
+button.black:hover{
+    background-color: rgb(198, 198, 198);
+}
+button.black:focus{
+    border: 3px solid white;
+}
+
+button.white{
+    color: white;
+    background: none;
+    border: 3px solid white;
+    font-weight: bold;
+}
+button.white:hover{
+    background-color: rgb(71, 71, 71);
 }

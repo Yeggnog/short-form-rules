@@ -4,6 +4,10 @@ h1 h2 h3 h4 h5 h6{
     font-family: 'ubuntu';
 }
 
+:focus{
+    border: 3px solid white;
+}
+
 a{
     text-decoration: none;
     color: black;
@@ -58,10 +62,13 @@ button{
     align-items: center;
     transition: 0.25s background-color, 0.25s border;
 }
+button:focus{
+    border: 3px solid black;
+}
 
 button.filled{
     color: white;
-    background-color: rgb(34, 125, 199);
+    background-color: #026DC5;
 }
 button.filled:hover{
     background-color: rgb(58, 177, 228);

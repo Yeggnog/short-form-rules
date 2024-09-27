@@ -39,8 +39,5 @@ input:invalid{
 
 button.fill-grey{
     color: white;
-    background-color: lightslategrey;
-}
-button.fill-grey:hover{
-    background-color: lightslategrey;
+    background-color: #677789;
 }
