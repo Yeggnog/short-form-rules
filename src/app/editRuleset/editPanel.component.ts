@@ -1,4 +1,4 @@
-import { Component, EventEmitter, ViewChild, Input, Output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, ViewChild, Input, Output } from "@angular/core";
 import { blockData, documentMeta } from "./editorTypes";
 import { TextEditorFill } from "./editPanelFills/textEditorFill.component";
 import { TableEditorFill } from "./editPanelFills/tableEditorFill.component";
@@ -16,7 +16,7 @@ import { MetadataEditorFill } from "./editPanelFills/metadataEditorFill.componen
             @if(!editingMetadata){
                 <button class="unfilled margin-s" (click)="onDelete()"><img class="icon" src="delete_icon_blue.svg"> Delete</button>
             }
-            <button class="unfilled margin-s" (click)="onCancel()"><img class="icon" src="close_icon_blue.svg"> Cancel</button>
+            <button #StartButton class="unfilled margin-s" (click)="onCancel()"><img class="icon" src="close_icon_blue.svg"> Cancel</button>
             <button class="unfilled margin-s" (click)="onSubmit()"><img class="icon" src="check_icon_blue.svg"> Save</button>
         </div>
 
@@ -51,13 +51,13 @@ export class EditPanel {
     @Output() deleteBlock = new EventEmitter();
     @Output() editorVisibleChange = new EventEmitter<boolean>();
     @ViewChild('EditorFill') editorFill!: TextEditorFill | TableEditorFill | DiceTableEditorFill | MetadataEditorFill;
+    @ViewChild('StartButton', {static: false}) startButton!: ElementRef;
 
     onDelete(){
         this.deleteBlock.emit();
     }
 
     onCancel(){
-        this.editorVisible = false;
         this.editorVisibleChange.emit(this.editorVisible);
     }
 
@@ -73,7 +73,6 @@ export class EditPanel {
             this.submitChanges.emit(this.blockData);
         }
 
-        this.editorVisible = false;
         this.editorVisibleChange.emit(this.editorVisible);
     }
 
@@ -93,6 +92,10 @@ export class EditPanel {
         }else{
             this.editorFill.updateData(data);
         }
+
+        setTimeout(() => {
+            this.startButton.nativeElement.focus();
+        }, 1);
     }
 
     getPanelClass(){

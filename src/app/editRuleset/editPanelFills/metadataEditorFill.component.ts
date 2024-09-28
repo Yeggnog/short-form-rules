@@ -29,7 +29,7 @@ import { colorOptions } from "../../renderingUtils";
         }
 
         <label for="RulesetColor">Header Color</label><br>
-        <div class="flex-row flex-wrap">
+        <div tabIndex=0 class="flex-row flex-wrap">
             @for(option of colorOptions; track option.name){
                 <input [id]="option.value" type="radio" name="RulesetColor" [value]="option.value" (change)="postColorUpdate($event)" class="sr-only">
                 <label [for]="option.value" [class]="getSwatchClass(option.value)" [style]="'background-color: ' + option.color">{{ option.value }}</label><br>

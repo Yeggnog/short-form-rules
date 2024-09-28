@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, inject, EventEmitter } from "@angular/core";
+import { Component, Input, ViewChild, ElementRef, inject, EventEmitter } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ParseMDPipe } from '../../htmlsanitize';
 import { headerColor, headerTextColor } from "../renderingUtils";
@@ -88,7 +88,7 @@ const defaultBlockData = (type: string) => {
                 <span>{{ cleanedMetadata['system'] }}</span> <span> ({{ cleanedMetadata['type'] }})</span><br>
                 <div class="flex-row flex-wrap">
                     <button class="filled margin-s" (click)="editMeta()"><img class="icon" src="edit_icon.svg"> Edit</button>
-                    <button class="filled margin-s" (click)="openRadialMenu()"><img class="icon" src="add_icon.svg"> New Block</button>
+                    <button #StartButton class="filled margin-s" (click)="openRadialMenu()"><img class="icon" src="add_icon.svg"> New Block</button>
                     <button class="filled margin-s" (click)="finalizeEdits()"><img class="icon" src="save_icon.svg"> Save Changes</button>
                     <button [class]="'unfilled margin-s ' + ((bannerTextDark) ? 'err' : 'white')" (click)="openModalEmitter.emit(true)">
                         @if(bannerTextDark){
@@ -114,7 +114,7 @@ const defaultBlockData = (type: string) => {
 
         <div class="rsEditorContainer">
             <section [class]="getReaderClass()">
-                <section class="rsReaderPage" (contextmenu)="openRadialMenu()">
+                <section #RSBlockContainer class="rsReaderPage" (contextmenu)="openRadialMenu()">
                     @if(rulesetBlocks.length > 0){
                         @for(block of rulesetBlocks; track block['blockId']){
                             <a href='#' [class]="getBlockClass(block)" (click)="onSelectBlockAccessible(block)">
@@ -128,7 +128,7 @@ const defaultBlockData = (type: string) => {
                 </section>
             </section>
 
-            <edit-panel [(editorVisible)]="editPanelVisible" #EditPanel [editingMetadata]="editingMetadata" [blockData]="selectedBlockData" [metaData]="cleanedMetadata" (submitChanges)="updateSelectedBlock($event)" (submitMeta)="updateMeta($event)" (deleteBlock)="deleteSelectedBlock()" />
+            <edit-panel #EditPanel [(editorVisible)]="editPanelVisible" (editorVisibleChange)="onEditPanelVisiblehange($event)" [editingMetadata]="editingMetadata" [blockData]="selectedBlockData" [metaData]="cleanedMetadata" (submitChanges)="updateSelectedBlock($event)" (submitMeta)="updateMeta($event)" (deleteBlock)="deleteSelectedBlock()" />
 
             <radial-menu [menuVisible]="radialMenuVisible" (selectOption)="createNewBlock($event)" />
         </div>
@@ -145,6 +145,8 @@ const defaultBlockData = (type: string) => {
 export class EditRuleset {
     @Input() metadata: Record<string,string> | undefined = undefined;
     @Input() rulesetData = "There is no data for this ruleset.";
+    @ViewChild('RSBlockContainer') rsBlockContainer!: ElementRef;
+    @ViewChild('StartButton') startButton!: ElementRef;
 
     route = inject(ActivatedRoute);
     constructor(private router:Router) { }
@@ -260,6 +262,16 @@ export class EditRuleset {
         }
     }
 
+    onEditPanelVisiblehange(event: boolean){
+        this.editPanelVisible = event;
+
+        // refocus if the panel was closed by cancelling
+        if(event == false){
+            var refocusPosition = this.rulesetBlocks.findIndex((block) => block.blockId == this.selectedBlockId);
+            this.rsBlockContainer.nativeElement.children[refocusPosition].focus();
+        }
+    }
+
     createNewBlock(blockType: string){
         // create the block data
         var newBlockData = defaultBlockData(blockType);
@@ -284,6 +296,7 @@ export class EditRuleset {
             let block = this.rulesetBlocks[i];
             if(block.blockId == editedBlockData.blockId){
                 this.rulesetBlocks[i] = editedBlockData;
+                this.rsBlockContainer.nativeElement.children[i].focus();
                 return;
             }
         }
@@ -301,6 +314,15 @@ export class EditRuleset {
         if(deletePosition != -1){
             this.rulesetBlocks.splice(i, 1);
             this.editPanelVisible = false;
+        }
+
+        // refocus to the previous block, if available
+        if(this.rulesetBlocks.length > 0 && deletePosition < this.rulesetBlocks.length){
+            this.rsBlockContainer.nativeElement.children[deletePosition-1].focus();
+        }else if(this.rulesetBlocks.length > 0){
+            this.rsBlockContainer.nativeElement.children[0].focus();
+        }else{
+            this.startButton.nativeElement.focus();
         }
     }
 

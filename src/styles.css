@@ -20,11 +20,6 @@ tr{
 tr:nth-child(odd){
     background-color: lightsteelblue;
 }
-tr.tr-flex{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
 
 td{
     padding: 6px;
@@ -38,11 +33,8 @@ th{
     cursor: pointer;
 }
 
-.td-flex{
-    flex-grow: 4;
-}
-.td-flex-small{
-    flex-grow: 1;
+td.td-small{
+    max-width: 6em;
 }
 .tdSelected{
     border: 3px solid rgb(34, 125, 199);

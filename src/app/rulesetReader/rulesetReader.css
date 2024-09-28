@@ -41,3 +41,10 @@
     border-radius: 6px;
     cursor: pointer;
 }
+
+a.rsBlock{
+    display: block;
+}
+a.rsBlockSelected{
+    display: block;
+}

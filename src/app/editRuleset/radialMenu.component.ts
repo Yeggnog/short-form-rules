@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, ElementRef, ViewChild, Input, Output } from "@angular/core";
 
 @Component({
     selector: 'radial-menu',
@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
     template: `
         <div [class]="getMenuClass()">
             <div class="radial-spacer"></div>
-            <button class="radialBtn" (click)="onSelected('text')"><img class="icon-fill" src="text_icon.svg" alt="Text block"></button>
+            <button #StartButton class="radialBtn" (click)="onSelected('text')"><img class="icon-fill" src="text_icon.svg" alt="Text block"></button>
             <div class="radial-spacer"></div>
             <button class="radialBtn" (click)="onSelected('table')"><img class="icon-fill" src="table_icon.svg" alt="Table"></button>
             <div class="radial-center"><img class="icon-fill" src="add_icon_blue.svg"></div>
@@ -22,6 +22,15 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 export class RadialMenu{
     @Output() selectOption = new EventEmitter<string>();
     @Input() menuVisible = false;
+    @ViewChild('StartButton', {static: false}) startButton!: ElementRef;
+
+    ngOnChanges(){
+        if(this.menuVisible){
+            setTimeout(() => {
+                this.startButton.nativeElement.focus();
+            }, 1);
+        }
+    }
 
     onSelected(type: string){
         this.selectOption.emit(type);

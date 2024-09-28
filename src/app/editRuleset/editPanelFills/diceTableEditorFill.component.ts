@@ -36,18 +36,26 @@ import { ParseHtmlPipe } from "../../../htmlsanitize";
         <table class="table-flex">
             @for(row of tableContents; track $index; let isHeader = $first, tableRow = $index){
                 @if(tableRow < diceType + 1){
-                    <tr class="tr-flex">
+                    <tr>
                     @for(cell of row; track $index; let tableCol = $index){
-                            @if(isHeader){
-                                <th (click)="onCellSelect(tableRow, tableCol)" [class]=" 'td-flex ' + getSelectionClass(tableRow, tableCol)">
-                                    {{ tableContents[tableRow][tableCol] }}
-                                </th>
-                            }
-                            @else{
-                                <td (click)="onCellSelect(tableRow, tableCol)" [class]=" 'td-flex ' + getSelectionClass(tableRow, tableCol)">
-                                    {{ tableContents[tableRow][tableCol] }}
-                                </td>
-                            }
+                        @if(isHeader){
+                            <th [class]="getSelectionClass(tableRow, tableCol)">
+                                <a href='#' (click)="onCellSelectAccessible(tableRow, tableCol)">
+                                    @if(tableContents[tableRow][tableCol] != ''){
+                                        {{ tableContents[tableRow][tableCol] }}
+                                    }@else{ <span class="hidden">Empty<span class="sr-only"> Cell</span></span> }
+                                </a>
+                            </th>
+                        }
+                        @else{
+                            <td [class]="getSelectionClass(tableRow, tableCol)">
+                                <a href='#' (click)="onCellSelectAccessible(tableRow, tableCol)">
+                                    @if(tableContents[tableRow][tableCol] != ''){
+                                        {{ tableContents[tableRow][tableCol] }}
+                                    }@else{ <span class="hidden">Empty<span class="sr-only"> Cell</span></span> }
+                                </a>
+                            </td>
+                        }
                     }
                     </tr>
                 }
@@ -82,9 +90,6 @@ export class DiceTableEditorFill{
                 this.tableContents[row].push( this.blockData.tableContents[row][col] );
             }
         }
-
-        // default to the upper left cell
-        this.cellContents = this.tableContents[0][0];
     }
 
     updateData(data: blockData){
@@ -96,6 +101,10 @@ export class DiceTableEditorFill{
         this.selection = [row, col];
         this.cellContents = this.tableContents[row][col];
         this.cellEditElement.nativeElement.focus();
+    }
+    onCellSelectAccessible(row: number, col: number){
+        this.onCellSelect(row, col);
+        return false; // tell the site not to navigate to the link
     }
 
     onCellTextChange(event: any){

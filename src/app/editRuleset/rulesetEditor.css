@@ -90,3 +90,20 @@ button.fill-black:hover{
 button.fill-black:focus{
     border: 3px solid white;
 }
+
+th a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+th a .hidden{
+    visibility: hidden;
+}
+td a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+td a .hidden{
+    visibility: hidden;
+}
