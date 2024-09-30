@@ -13,7 +13,7 @@ import { deleteUser } from "../authhandler";
     standalone: true,
     imports: [SiteHeader, Toast, RouterLink, RouterLinkActive, RulesetCardContainer, ConfirmModal],
     template: `
-    <div class="flex-col fullscreen-v">
+    <div class="flex-col">
         <site-nav />
 
         <div class="rsReaderContainer">

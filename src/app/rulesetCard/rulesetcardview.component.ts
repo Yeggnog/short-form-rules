@@ -10,7 +10,7 @@ import { Toast, ToastManager } from '../toast.component';
     standalone: true,
     imports: [RulesetCardContainer, SiteHeader, Toast, RouterLink, RouterLinkActive],
     template: `
-    <div class="flex-col fullscreen-v">
+    <div class="flex-col">
         <site-nav />
         @if(username != ''){
             <div class="flex-row sticky bg-black">

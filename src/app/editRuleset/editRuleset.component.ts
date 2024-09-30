@@ -66,7 +66,7 @@ const defaultBlockData = (type: string) => {
     standalone: true,
     imports: [SiteHeader, Toast, ParseMDPipe, FormsModule, EditPanel, RulesetBlock, RadialMenu, RouterLink, RouterLinkActive, ConfirmModal],
     template: `
-    <div class="flex-col fullscreen-v">
+    <div class="flex-col">
         <site-nav />
         @if(cleanedMetadata){
             <div class="rsHeader" [style]="'background-color: ' + getHeaderColor(cleanedMetadata['color']) + '; color: ' + getheaderTextColor(cleanedMetadata['color'])">
@@ -140,7 +140,7 @@ const defaultBlockData = (type: string) => {
         <confirm-modal headlineText="Delete this ruleset?" bodyText="Are you sure you want to delete this ruleset?" confirmText="Yes, delete it" declineText="No, don't delete it" [dangerous]="true" [openEvent]="openModalEmitter" (response)="deleteRuleset($event)" />
     </div>
     `,
-    styleUrl: './rulesetEditor.css'
+    styleUrls: [ './rulesetEditor.css', '../rulesetReader/rulesetHeader.css' ]
 })
 export class EditRuleset {
     @Input() metadata: Record<string,string> | undefined = undefined;

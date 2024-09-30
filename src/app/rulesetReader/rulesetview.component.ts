@@ -23,7 +23,7 @@ export class ViewRoute implements PipeTransform {
     standalone: true,
     imports: [ParseMDPipe, RulesetBlock, SiteHeader, Toast, ViewRoute, RouterLink, RouterLinkActive],
     template: `
-    <div class="flex-col fullscreen-v">
+    <div class="flex-col">
         <site-nav />
         @if(metadata && metadata !== {}){
             <div class="rsHeader sticky" [style]="'background-color: ' + getHeaderColor(metadata['color']) + '; color: ' + getheaderTextColor(metadata['color'])">
@@ -89,7 +89,7 @@ export class ViewRoute implements PipeTransform {
         }
     </div>
     `,
-    styleUrl: '../rulesetoverview.component.css'
+    styleUrls: [ '../rulesetoverview.component.css', '../buttonStyles.css', './rulesetHeader.css' ]
 })
 export class RulesetView {
     metadata: Record<string,string> = {

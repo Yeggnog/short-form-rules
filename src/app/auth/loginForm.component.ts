@@ -10,7 +10,7 @@ import { InvalidParameterException, UserNotConfirmedException, UserNotFoundExcep
     standalone: true,
     imports: [SiteHeader, Toast, RouterLink, RouterLinkActive],
     template: `
-    <div class="flex-col fullscreen-v">
+    <div class="flex-col">
         <site-nav />
 
         <a routerLink="" routerLinkActive="true" class="margin-s"><button class="unfilled"><img class="icon" src="arrow_back_icon_blue.svg"> Back</button></a>

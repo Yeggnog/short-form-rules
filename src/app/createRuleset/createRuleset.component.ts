@@ -12,7 +12,7 @@ import { Toast, ToastManager } from "../toast.component";
     standalone: true,
     imports: [FormsModule, SiteHeader, Toast, RulesetTypeOption, RouterLink, RouterLinkActive],
     template: `
-    <div class="flex-col fullscreen-v">
+    <div class="flex-col">
         <site-nav />
 
         <a routerLink="" routerLinkActive="true" class="margin-s"><button class="unfilled"><img class="icon" src="arrow_back_icon_blue.svg"> Back</button></a>
@@ -66,7 +66,7 @@ import { Toast, ToastManager } from "../toast.component";
         }
     </div>
     `,
-    styleUrl: './createFormStyles.css'
+    styleUrls: [ './createFormStyles.css', '../rulesetReader/rulesetHeader.css' ]
 })
 export class CreateRuleset {
     constructor(private router:Router) { }

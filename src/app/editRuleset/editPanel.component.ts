@@ -58,6 +58,7 @@ export class EditPanel {
     }
 
     onCancel(){
+        this.editorVisible = false;
         this.editorVisibleChange.emit(this.editorVisible);
     }
 

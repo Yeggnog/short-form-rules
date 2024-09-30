@@ -1,4 +1,5 @@
 @import '../sharedStyles.css';
+@import '../utilityStyles.css';
 @import '../rulesetReader/rulesetReader.css';
 @import '../buttonStyles.css';
 @import '../inputStyles.css';
@@ -106,4 +107,17 @@ td a{
 }
 td a .hidden{
     visibility: hidden;
+}
+
+a.rsBlock, a.rsBlockSelected{
+    display: block;
+}
+
+.flex{
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+.squared{
+    border-radius: 0 !important;
 }

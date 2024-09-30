@@ -1,4 +1,5 @@
 @import './sharedStyles.css';
+@import './utilityStyles.css';
 @import './buttonStyles.css';
 @import './rulesetReader/rulesetReader.css';
 
@@ -27,4 +28,8 @@
 a{
     color: black;
     font-weight: bold;
+}
+
+.headerFont{
+    font-family: 'ubuntu';
 }

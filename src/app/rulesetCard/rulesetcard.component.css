@@ -1,4 +1,5 @@
 @import '../sharedStyles.css';
+@import '../rulesetReader/rulesetHeader.css';
 
 h2{
     font-family: sans-serif;
